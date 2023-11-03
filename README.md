@@ -31,9 +31,11 @@ If you want to follow my logic of execution this is how I worked:
   The corresponding files (Pipfile, Pipfile.lock) can be found in the repository
 
 - I built a docker image by using the Dockerfile in this repo:
+  
   docker build -t <image_name> .
 
 - In order to run the docker container:
+  
   docker run -it --rm -p 9696:9696 <image_name>
 
 - While the container is running you can use the notebook sending_requests.ipynb to obtain 12-month future sales forecasts for car brands in Norway.
