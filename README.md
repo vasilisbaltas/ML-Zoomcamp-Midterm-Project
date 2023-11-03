@@ -24,6 +24,7 @@ If you want to follow my logic of execution this is how I worked:
 - It should be noted that the Random Forest algorithm appeared to provide us with better results, hence its model(random_forest.bin) was preferred for the production environment.
   Moreover, if you wish to reproduce the xgboost cross-validation procedure(XGBoost.ipynb) I highly recommend to avoid jupyter notebook and do it on your own machine with a different IDE.
   I had runtime problems because it need moderate computing power and time...
+- A prediction script was developed predict.py for model inference which is also supplied to the docker image
   
 - I created a pipenv virtual environment for production with the following installation command (did not included xgboost):
 
