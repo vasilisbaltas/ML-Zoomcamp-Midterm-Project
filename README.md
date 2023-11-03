@@ -19,3 +19,25 @@ If you want to follow my logic of execution this is how I worked:
 - Then, I did some basic exploration in order to check for missing values, minimum and maximum dates and provided some plotting functions in the EDA.ipynb notebook
 - The most important part of this work is the python file make_datasets_w_categorical.py. This file help us build a custom train-test split function for tabularized time series
   enhanced with external categorical variables. It is highly recommended to reproduce the code step-by-step in order to understand the logic
+- The transformed dataset(tabularized) suitable for ML training and prediction was also saved in the file tabular_sales_forML.csv
+- Two models were explored, random forest and xgboost, and a hyperparameter tuning was also performed. The corresponding notebooks are RandomForest.ipynb and XGBoost.ipynb.
+- It should be noted that the Random Forest algorithm appeared to provide us with better results, hence its model(random_forest.bin) was preferred for the production environment.
+  Moreover, if you wish to reproduce the xgboost cross-validation procedure(XGBoost.ipynb) I highly recommend to avoid jupyter notebook and do it on your own machine with a different IDE.
+  I had runtime problems because it need moderate computing power and time...
+  
+- I created a pipenv virtual environment for production with the following installation command (did not included xgboost):
+  pipenv install pandas numpy scikit-learn matplotlib flask waitress
+
+  The corresponding files (Pipfile, Pipfile.lock) can be found in the repository
+
+- I built a docker image by using the Dockerfile in this repo:
+  docker build -t <image_name> .
+
+- In order to run the docker container:
+  docker run -it --rm -p 9696:9696 <image_name>
+
+- While the container is running you can use the notebook sending_requests.ipynb to obtain 12-month future sales forecasts for car brands in Norway.
+  Please provide to your http call only car brands stated in the list - I have not implemented exception handling for brands that do not exist
+
+
+Finally, in order ton run all the above, please place all the files in the same folder.
